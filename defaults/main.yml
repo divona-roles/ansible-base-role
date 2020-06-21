@@ -17,13 +17,13 @@
 nux_url: http://li.nux.ro/download/nux/dextop/el{{ ansible_distribution_major_version }}/$basearch/
 nux_miroror_url: http://mirror.li.nux.ro/li.nux.ro/nux/dextop/el{{ ansible_distribution_major_version }}/$basearch/
 
-yay_version: 9.0.1
+yay_version: v10.0.1 #9.0.1
 yay_package_name: "yay_{{ yay_version }}_x86_64.tar.gz"
 yay_download_url: https://github.com/Jguer/yay/releases/download/v{{ yay_version }}/yay_{{ yay_version }}_x86_64.tar.gz
 yay_dir: /home/{{ user }}/Applications
 yay_install_dir: /home/{{ user }}/Applications/yay_{{ yay_version }}_x86_64
 
-powerline_go_version: 1.11.0
+powerline_go_version: 1.17.0
 powerline_go_linux_download_url: https://github.com/justjanne/powerline-go/releases/download/v{{ powerline_go_version }}/powerline-go-linux-amd64
 powerline_go_linux_file: /home/{{ user }}/bin/powerline-go
 powerline_go_darwin_download_url: https://github.com/justjanne/powerline-go/releases/download/v{{ powerline_go_version }}/powerline-go-darwin-amd64
