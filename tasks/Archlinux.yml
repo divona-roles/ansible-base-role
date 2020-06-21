@@ -40,7 +40,6 @@
     packages:
       - zsh-completions
       - zsh-autosuggestions
-      - zsh-theme-powerlevel9k
 
 - name: Install Fish shell
   pacman:
