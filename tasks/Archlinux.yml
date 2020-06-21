@@ -128,5 +128,5 @@
     state: present
   vars:
     packages:
-      - extfat-utils
+      - exfat-utils
 
