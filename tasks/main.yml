@@ -1,0 +1,60 @@
+# Copyright (C) 2013-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+---
+- name: Directories for Unix
+  block:
+    - include_tasks: unix.yml
+  when: (ansible_distribution == 'Debian' or
+         ansible_distribution == 'Archlinux' or
+         ansible_distribution == 'CentOS' or
+         ansible_distribution == 'Linux Mint' or
+         ansible_distribution == 'Fedora' or
+         ansible_distribution == 'FreeBSD' or
+         ansible_distribution == 'NetBSD')
+  become: true
+  become_user: root
+
+- name: Include OS-specific tasks
+  block:
+    - include_tasks: "{{ ansible_distribution }}.yml"
+  when: (ansible_distribution == 'Archlinux' or
+         ansible_distribution == 'CentOS' or
+         ansible_distribution == 'Debian' or
+         ansible_distribution == 'Fedora' or
+         ansible_distribution == 'FreeBSD' or
+         ansible_distribution == 'Linux Mint' or
+         ansible_distribution == 'NetBSD' or
+         ansible_distribution == 'OpenBSD' or
+         ansible_distribution == 'Windows')
+  become: true
+  become_user: root
+
+- name: Include OS-specific tasks
+  block:
+    - include_tasks: "{{ ansible_distribution }}.yml"
+  when: ansible_distribution == 'MacOSX'
+
+- name: Tools for Linux
+  block:
+    - include_tasks: "linux.yml"
+  when: (ansible_distribution == 'Debian' or
+         ansible_distribution == 'Archlinux' or
+         ansible_distribution == 'CentOS' or
+         ansible_distribution == 'Linux Mint' or
+         ansible_distribution == 'Fedora')
+
+- name: Tools for Archlinux
+  block:
+    - import_tasks: arch_tools.yml
+  when: ansible_distribution == 'Archlinux'

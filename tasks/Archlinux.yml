@@ -1,0 +1,133 @@
+# Copyright (C) 2013-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+---
+- name: Update database
+  pacman:
+    update_cache: true
+
+- name: Install distribution tools
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - pacman-contrib
+
+- name: Install Bash shell
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - bash-completion
+
+- name: Install Zsh shell
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - zsh-completions
+      - zsh-autosuggestions
+      - zsh-theme-powerlevel9k
+
+- name: Install Fish shell
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - fish
+
+- name: Install shell tools
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - screenfetch
+      - tree
+      - tmux
+      - ncdu
+      - feh
+      - nnn
+      - htop
+
+- name: Install defaults packages
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - man-db
+      - dunst
+      - git
+      - gnupg
+      - tig
+      - unzip
+      - ccze
+      - dmidecode
+
+- name: Install terminal emulators
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - termite
+      - alacritty
+
+- name: Install networks tools
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - dhclient
+      - iw
+      - openssh
+      - wget
+      - curl
+      - nghttp2
+      - bind-tools
+      - mtr
+      - traceroute
+      - openbsd-netcat
+      - ipcalc
+      - nmap
+      - ngrep
+      - nethogs
+
+- name: Install modern Unix tools
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - fzf
+      - ripgrep
+      - exa
+      - fd
+      - bat
+      - lsd
+      - diskus
+
+- name: Install file system tools
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - extfat-utils
+
