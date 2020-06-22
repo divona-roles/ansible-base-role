@@ -1,23 +1,10 @@
-# Copyright (C) 2013-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 ---
 # defaults file for base
 
 nux_url: http://li.nux.ro/download/nux/dextop/el{{ ansible_distribution_major_version }}/$basearch/
 nux_miroror_url: http://mirror.li.nux.ro/li.nux.ro/nux/dextop/el{{ ansible_distribution_major_version }}/$basearch/
 
-yay_version: 10.0.1 #9.0.1
+yay_version: 10.0.1
 yay_package_name: "yay_{{ yay_version }}_x86_64.tar.gz"
 yay_download_url: https://github.com/Jguer/yay/releases/download/v{{ yay_version }}/yay_{{ yay_version }}_x86_64.tar.gz
 yay_dir: /home/{{ user }}/Applications

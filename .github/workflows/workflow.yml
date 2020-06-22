@@ -3,13 +3,13 @@ name: Ansible Role  # feel free to pick your own name
 on: [push, pull_request]
 
 jobs:
-  build:
 
+  lint:
     runs-on: ubuntu-latest
-
     steps:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
 
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref
@@ -71,6 +71,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
+
       - name: Molecule
         uses: gofrolist/molecule-action@master
         with:
