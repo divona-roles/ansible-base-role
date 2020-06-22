@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) 2013-2020 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-BANNER = D I V O N A / B A S E  R O L E
+BANNER = D I V O N A - R O L E S / B A S E
 VERSION = 3.0.0
 
 PYTHON3 = python3
@@ -48,7 +48,7 @@ WARN=[⚠️]
 
 .PHONY: help
 help:
-	@echo -e "$(OK_COLOR)                  $(BANNER)$(NO_COLOR)"
+	@echo -e "$(OK_COLOR)             $(BANNER)$(NO_COLOR)"
 	@echo "------------------------------------------------------------------"
 	@echo ""
 	@awk 'BEGIN {FS = ":.*##"; printf "${ERROR_COLOR}Usage${NO_COLOR}: make ${INFO_COLOR}<target>${NO_COLOR}\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  ${INFO_COLOR}%-25s${NO_COLOR} %s\n", $$1, $$2 } /^##@/ { printf "\n${WHITE_COLOR}%s${NO_COLOR}\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
