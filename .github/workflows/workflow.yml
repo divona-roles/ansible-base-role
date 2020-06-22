@@ -60,11 +60,12 @@ jobs:
       fail-fast: false
       matrix:
         scenario:
-          - centos-7
-          - debian-9
-          - fedora-28
-          - oraclelinux-7
-          - ubuntu-18.04
+          - default
+          # - centos-7
+          # - debian-9
+          # - fedora-28
+          # - oraclelinux-7
+          # - ubuntu-18.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -73,6 +74,5 @@ jobs:
       - name: Molecule
         uses: gofrolist/molecule-action@master
         with:
-          molecule_options: --debug --base-config molecule/_shared/base.yml
           molecule_command: test
           molecule_args: --scenario-name ${{ matrix.scenario }}
