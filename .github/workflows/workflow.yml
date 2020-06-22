@@ -54,26 +54,37 @@ jobs:
         #   -c C                  Specify configuration file to use. Defaults to ".ansible-lint"
         args: ""
 
-  molecule:
+  test:
+    needs:
+      - lint
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        scenario:
-          - default
-          # - centos-7
-          # - debian-9
-          # - fedora-28
-          # - oraclelinux-7
-          # - ubuntu-18.04
+        config:
+          - image: "centos"
+            tag: "7"
+          - image: "debian"
+            tag: "bullseye"
+          - image: "fedora"
+            tag: "31"
+          - image: "opensuse"
+            tag: "latest"
+          - image: "ubuntu"
+            tag: "bionic"
+          - image: "ubuntu"
+            tag: "xenial"
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
 
-      - name: Molecule
-        uses: gofrolist/molecule-action@master
+      - name: molecule
+        uses: robertdebock/molecule-action@2.3.4
         with:
-          molecule_command: test
-          molecule_args: --scenario-name ${{ matrix.scenario }}
+          image: ${{ matrix.config.image }}
+          tag: ${{ matrix.config.tag }}
+          options: "--parallel all"
+        env:
+          TOX_PARALLEL_NO_SPINNER: 1
