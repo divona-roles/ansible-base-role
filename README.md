@@ -1,7 +1,7 @@
 Base
 =========
 
-[![Build Status](https://github.com/divona-roles/ansible-base-role/workflows/main/badge.svg)](https://github.com/divona-roles/ansible-base-role/actions)
+![Ansible Role](https://github.com/divona-roles/ansible-base-role/workflows/Ansible%20Role/badge.svg)
 
 Role which deploy a common base.
 
