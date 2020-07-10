@@ -16,7 +16,7 @@ powerline_go_linux_file: /home/{{ user }}/bin/powerline-go
 powerline_go_darwin_download_url: https://github.com/justjanne/powerline-go/releases/download/v{{ powerline_go_version }}/powerline-go-darwin-amd64
 powerline_go_darwin_file: /Users/{{ user }}/bin/powerline-go
 
-lf_version: r8
+lf_version: r14
 lf_linux_package_name: lf-linux-amd64.tar.gz
 lf_linux_download_url: https://github.com/gokcehan/lf/releases/download/{{ lf_version }}/{{ lf_linux_package_name }}
 lf_linux_dir: /home/{{ user }}/bin
