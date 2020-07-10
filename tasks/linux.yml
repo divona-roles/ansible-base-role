@@ -51,6 +51,9 @@
         # checksum: "{{ lf_linux_checksum }}"
         force: true
 
+    - name: Check LF installation
+      command: ls -alFrt /tmp/
+
     - name: Install LF
       unarchive:
         src: "/tmp/{{ lf_linux_package_name }}"
