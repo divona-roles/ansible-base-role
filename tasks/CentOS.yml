@@ -44,6 +44,7 @@
     state: present
   vars:
     packages:
+      - which
       - tmux
       - tree
       - ncdu

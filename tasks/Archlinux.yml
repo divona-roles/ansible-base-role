@@ -55,6 +55,7 @@
     state: present
   vars:
     packages:
+      - which
       - screenfetch
       - tree
       - tmux
