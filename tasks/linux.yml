@@ -21,44 +21,6 @@
     mode: 0755
     force: true
 
-- name: Check LF installation
-  command: which lf
-  register: lf_installation
-  changed_when: false
-  ignore_errors: true
-  check_mode: false
-
-- name: Get installed LF version
-  command: "{{ lf_installation.stdout }} -version"
-  when: not lf_installation is failed
-  changed_when: false
-  check_mode: false
-  register: installed_lf_version
-
-- name: LF installation is required
-  set_fact:
-    lf_installation_required: "{{ lf_installation is failed or installed_lf_version.stdout != lf_version }}"
-
-- name: LF installation
-  when:
-    - lf_installation_required
-  block:
-    - name: Download LF archive
-      get_url:
-        url: "{{ lf_linux_download_url }}"
-        dest: "/tmp/{{ lf_linux_package_name }}"
-        mode: 0600
-        # checksum: "{{ lf_linux_checksum }}"
-        force: true
-
-    - name: Check LF installation
-      command: ls -alFrt /tmp/
-
-    - name: Install LF
-      unarchive:
-        src: "/tmp/{{ lf_linux_package_name }}"
-        dest: "{{ lf_linux_dir }}"
-
 - name: Check Gotop installation
   command: which gotop
   register: gotop_installation
