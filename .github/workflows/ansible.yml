@@ -71,9 +71,7 @@ jobs:
           - image: "opensuse"
             tag: "latest"
           - image: "ubuntu"
-            tag: "bionic"
-          - image: "ubuntu"
-            tag: "xenial"
+            tag: "latest"
     steps:
       - name: checkout
         uses: actions/checkout@v2

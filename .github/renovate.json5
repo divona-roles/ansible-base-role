@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "config:base",
+    ":gitSignOff"
+  ],
+  "enabled": true,
+  "timezone": "Europe/Paris",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  // "gitAuthor": "Nicolas Lamirault <nlamirault@users.noreply.github.com>",
+  // "commitBody": "Signed-off-by: Nicolas Lamirault <nlamirault@users.noreply.github.com>",
+  // Do not notify on closed unmerged PRs
+  "suppressNotifications": ["prIgnoreNotification"],
+  // Do not rebase PRs
+  "rebaseWhen": "conflicted",
+  "assignees": ["@nlamirault"],
+  "reviewersFromCodeOwners": true,
+  "packageRules": [
+    // Labels for Ansible
+    {
+      "datasources": ["galaxy", "galaxy-collection"],
+      "updateTypes": ["major"],
+      "labels": ["area/renovate", "dependency/ansible", "priority/high", "size/xs"]
+    },
+    {
+      "datasources": ["galaxy", "galaxy-collection"],
+      "updateTypes": ["minor"],
+      "labels": ["area/renovate", "dependency/ansible", "priority/medium", "size/xs"]
+    },
+    {
+      "datasources": ["galaxy", "galaxy-collection"],
+      "updateTypes": ["patch"],
+      "labels": ["area/renovate", "dependency/ansible", "priority/low", "size/xs"]
+    },
+  ]
+}
