@@ -12,5 +12,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-# handlers file for base
+name: Prow / Github Actions
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jpmcb/prow-github-actions@v1.1.2
+        with:
+          prow-commands: '/assign
+            /unassign
+            /approve
+            /retitle
+            /area
+            /kind
+            /priority
+            /status
+            /remove
+            /lgtm
+            /close
+            /reopen
+            /lock
+            /milestone
+            /hold
+            /cc
+            /uncc'
+          github-token: "${{ secrets.GITHUB_TOKEN }}"

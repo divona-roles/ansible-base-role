@@ -81,6 +81,10 @@ clean: ## Cleanup
 	@find . -name "*.retry"|xargs rm -fr {} \;
 	@rm -fr roles
 
+.PHONY: validate
+validate: ## Execute git-hooks
+	@pre-commit run -a
+
 
 # ====================================
 # A N S I B L E
