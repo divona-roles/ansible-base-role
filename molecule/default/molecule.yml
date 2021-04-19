@@ -3,17 +3,18 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
 platforms:
   - name: archlinux
-    image: base/archlinux:2018.11.01
-  - name: debian
-    image: debian:stretch
-  - name: centos
-    image: centos:7
-  - name: fedora
-    image: fedora:29
+    image: archlinux:20200505
+  # - name: debian
+  #   image: debian:stretch
+  # - name: centos
+  #   image: centos:7
+  # - name: fedora
+  #   image: fedora:29
 provisioner:
   name: ansible
   lint:

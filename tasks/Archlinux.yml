@@ -55,6 +55,7 @@
     state: present
   vars:
     packages:
+      - which
       - screenfetch
       - tree
       - tmux
@@ -128,5 +129,6 @@
     state: present
   vars:
     packages:
+      - dosfstools
+      - mtools
       - exfat-utils
-

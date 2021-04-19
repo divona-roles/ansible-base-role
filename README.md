@@ -1,6 +1,8 @@
 Base
 =========
 
+![Ansible Role](https://github.com/divona-roles/ansible-base-role/workflows/Ansible%20Role/badge.svg)
+
 Role which deploy a common base.
 
 Requirements
