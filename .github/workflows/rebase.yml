@@ -12,38 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-- name: Create Applications directory
-  file:
-    path: C:\Applications
-    state: directory
-    mode: 0755
-
-- name: Create local "Users" group
-  win_group:
-    name: Users
-    description: Local Users
-    state: present
-
-- name: Install shell tools
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - fzf
-
-- name: Install terminal emulators
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - cmder
-
-- name: Install packages
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - git
-    - cygwin
-    - windirstat
+name: Projet / Rebase
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  rebase:
+    name: Rebase
+    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/rebase')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the latest code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
+      - name: Automatic Rebase
+        uses: cirrus-actions/rebase@1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

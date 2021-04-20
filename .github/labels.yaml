@@ -12,38 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-- name: Create Applications directory
-  file:
-    path: C:\Applications
-    state: directory
-    mode: 0755
+# labels to be used with /area command
+area:
+  - 'ansible'
 
-- name: Create local "Users" group
-  win_group:
-    name: Users
-    description: Local Users
-    state: present
+kind:
+  - 'documentation'
+  - 'discussion'
+  - 'feature'
+  - 'question'
 
-- name: Install shell tools
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - fzf
+priority:
+  - 'low'
+  - 'medium'
+  - 'high'
+  - 'critical'
 
-- name: Install terminal emulators
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - cmder
+status:
+  - available
+  - blocked
+  - in_progress
+  - on_hold
 
-- name: Install packages
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - git
-    - cygwin
-    - windirstat
+# File globs for PR labeler
+# tests:
+#   - '**/*.test.ts'
+

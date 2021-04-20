@@ -1,15 +1,29 @@
-name: Ansible Role  # feel free to pick your own name
+# Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Ansible / Lint
 
 on: [push, pull_request]
 
 jobs:
+  build:
 
-  lint:
     runs-on: ubuntu-latest
+
     steps:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref
@@ -27,9 +41,9 @@ jobs:
         # [optional]
         # Arguments to override a package and its version to be set explicitly.
         # Must follow the example syntax.
-        override-deps: |
-          ansible==2.9
-          ansible-lint==4.2.0
+        # override-deps: |
+        #   ansible==2.9
+        #   ansible-lint==4.2.0
         # [optional]
         # Arguments to be passed to the ansible-lint
 
@@ -53,38 +67,3 @@ jobs:
         #                         repeatable.
         #   -c C                  Specify configuration file to use. Defaults to ".ansible-lint"
         args: ""
-
-  test:
-    needs:
-      - lint
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - image: "centos"
-            tag: "7"
-          - image: "debian"
-            tag: "bullseye"
-          - image: "fedora"
-            tag: "31"
-          - image: "opensuse"
-            tag: "latest"
-          - image: "ubuntu"
-            tag: "bionic"
-          - image: "ubuntu"
-            tag: "xenial"
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-        with:
-          path: "${{ github.repository }}"
-
-      - name: molecule
-        uses: robertdebock/molecule-action@2.3.4
-        with:
-          image: ${{ matrix.config.image }}
-          tag: ${{ matrix.config.tag }}
-          options: "--parallel all"
-        env:
-          TOX_PARALLEL_NO_SPINNER: 1

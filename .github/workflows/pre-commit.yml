@@ -12,38 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-- name: Create Applications directory
-  file:
-    path: C:\Applications
-    state: directory
-    mode: 0755
+# name: Project / Pre-commit
 
-- name: Create local "Users" group
-  win_group:
-    name: Users
-    description: Local Users
-    state: present
+# on:
+#   pull_request:
+#   push:
+#     branches: [master]
 
-- name: Install shell tools
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - fzf
-
-- name: Install terminal emulators
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - cmder
-
-- name: Install packages
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - git
-    - cygwin
-    - windirstat
+# jobs:
+#   pre-commit:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - uses: actions/setup-python@v2
+#     - uses: pre-commit/action@v2.0.0

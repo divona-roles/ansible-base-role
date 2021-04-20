@@ -12,38 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-- name: Create Applications directory
-  file:
-    path: C:\Applications
-    state: directory
-    mode: 0755
+name: Prow / Merge on lgtm label
+on:
+  schedule:
+  - cron: "0 * * * *"
 
-- name: Create local "Users" group
-  win_group:
-    name: Users
-    description: Local Users
-    state: present
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jpmcb/prow-github-actions@v1.1.2
+        with:
+          jobs: 'lgtm'
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-- name: Install shell tools
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - fzf
-
-- name: Install terminal emulators
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - cmder
-
-- name: Install packages
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - git
-    - cygwin
-    - windirstat
+          # this configuration is optional and will default to 'merge'
+          # possible options are 'merge', 'rebase', or 'squash'
+          merge-method: 'squash'

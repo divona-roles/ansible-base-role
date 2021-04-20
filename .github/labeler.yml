@@ -12,38 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-- name: Create Applications directory
-  file:
-    path: C:\Applications
-    state: directory
-    mode: 0755
+# Labels for action/labeler
 
-- name: Create local "Users" group
-  win_group:
-    name: Users
-    description: Local Users
-    state: present
-
-- name: Install shell tools
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - fzf
-
-- name: Install terminal emulators
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - cmder
-
-- name: Install packages
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - git
-    - cygwin
-    - windirstat
+area/ansible:
+  - defaults/*
+  - tasks/*
+  - handlers/*
+  - vars/*

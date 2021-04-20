@@ -12,38 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-- name: Create Applications directory
-  file:
-    path: C:\Applications
-    state: directory
-    mode: 0755
+name: Project / Size PR
 
-- name: Create local "Users" group
-  win_group:
-    name: Users
-    description: Local Users
-    state: present
+on:
+  pull_request:
+    types: [opened, synchronize]
 
-- name: Install shell tools
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - fzf
+jobs:
+  update_labels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-- name: Install terminal emulators
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - cmder
+      - uses: actions-ecosystem/action-size@v2
+        id: size
 
-- name: Install packages
-  win_chocolatey:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - git
-    - cygwin
-    - windirstat
+      - uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          labels: ${{ steps.size.outputs.stale_labels }}
+
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          labels: ${{ steps.size.outputs.new_label }}
