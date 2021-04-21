@@ -109,6 +109,7 @@
       - nmap
       - ngrep
       - nethogs
+      - bandwhich
 
 - name: Install modern Unix tools
   pacman:
