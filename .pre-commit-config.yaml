@@ -31,7 +31,7 @@ repos:
 #     - id: ansible-lint
 #       files: \.(yaml|yml)$
 -   repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.9
+    rev: v1.1.10
     hooks:
     -   id: insert-license
         files: \.yaml
