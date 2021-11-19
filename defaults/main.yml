@@ -15,22 +15,13 @@
 ---
 # defaults file for base
 
-nux_url: http://li.nux.ro/download/nux/dextop/el{{ ansible_distribution_major_version }}/$basearch/
-nux_miroror_url: http://mirror.li.nux.ro/li.nux.ro/nux/dextop/el{{ ansible_distribution_major_version }}/$basearch/
-
 yay_version: 11.0.2
 yay_package_name: "yay_{{ yay_version }}_x86_64.tar.gz"
 yay_download_url: https://github.com/Jguer/yay/releases/download/v{{ yay_version }}/yay_{{ yay_version }}_x86_64.tar.gz
 yay_dir: /home/{{ user }}/Applications
 yay_install_dir: /home/{{ user }}/Applications/yay_{{ yay_version }}_x86_64
 
-powerline_go_version: 1.17.0
-powerline_go_linux_download_url: https://github.com/justjanne/powerline-go/releases/download/v{{ powerline_go_version }}/powerline-go-linux-amd64
-powerline_go_linux_file: /home/{{ user }}/bin/powerline-go
-powerline_go_darwin_download_url: https://github.com/justjanne/powerline-go/releases/download/v{{ powerline_go_version }}/powerline-go-darwin-amd64
-powerline_go_darwin_file: /Users/{{ user }}/bin/powerline-go
-
-lf_version: r14
+lf_version: r26
 lf_linux_package_name: lf-linux-amd64.tar.gz
 lf_linux_download_url: https://github.com/gokcehan/lf/releases/download/{{ lf_version }}/{{ lf_linux_package_name }}
 lf_linux_dir: /home/{{ user }}/bin
@@ -38,15 +29,7 @@ lf_darwin_package_name: lf-darwin-amd64.tar.gz
 lf_darwin_download_url: https://github.com/gokcehan/lf/releases/download/{{ lf_version }}/{{ lf_darwin_package_name }}
 lf_darwin_dir: /Users/{{ user }}/bin/lf
 
-gotop_version: 2.0.0
-gotop_linux_package_name: gotop_2.0.1_linux_amd64.tgz
-gotop_linux_download_url: https://github.com/cjbassi/gotop/releases/download/{{ gotop_version }}/gotop_{{ gotop_version }}_linux_amd64.tgz
-gotop_linux_dir: /home/{{ user }}/bin
-gotop_darwin_package_name: gotop_2.0.1_darwin_amd64.tgz
-gotop_darwin_download_url: https://github.com/cjbassi/gotop/releases/download/{{ gotop_version }}/gotop_{{ gotop_version }}_darwin_amd64.tgz
-gotop_darwin_dir: /Users/{{ user }}/bin
-
-lazygit_version: 0.7.2
+lazygit_version: 0.31.3
 lazygit_linux_package_name: lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz
 lazygit_linux_checksum: "sha256:11768b99b5c2b85c435a3cff585187a8e6d2b102ff45f6bb744f69b2a28112db"
 lazygit_linux_download_url: https://github.com/jesseduffield/lazygit/releases/download/v{{ lazygit_version }}/{{ lazygit_linux_package_name }}
@@ -55,3 +38,18 @@ lazygit_darwin_package_name: lazygit_{{ lazygit_version }}_Darwin_x86_64.tar.gz
 lazygit_darwin_checksum: "sha256:a51fb5bebcde0c01b21ee8b2d75e13846601f9b996eb23ef87f5ea89775f0737"
 lazygit_darwin_download_url: https://github.com/jesseduffield/lazygit/releases/download/v{{ lazygit_version }}/{{ lazygit_darwin_package_name }}
 lazygit_darwin_dir: /Users/{{ user }}/bin
+
+user_dirs:
+  - Applications
+  - Projects
+  - Work
+
+xdg_dirs:
+  - Desktop
+  - Documents
+  - Downloads
+  - Music
+  - Pictures
+  - Public
+  - Templates
+  - Videos

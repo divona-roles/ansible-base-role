@@ -86,7 +86,7 @@
     state: present
   vars:
     packages:
-      - termite
+      # - termite
       - alacritty
 
 - name: Install networks tools
@@ -134,3 +134,6 @@
       - dosfstools
       - mtools
       - exfat-utils
+      - xdg-utils
+      - xdg-user-dirs
+      - xdg-user-dirs-gtk
