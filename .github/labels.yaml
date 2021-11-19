@@ -37,4 +37,3 @@ status:
 # File globs for PR labeler
 # tests:
 #   - '**/*.test.ts'
-

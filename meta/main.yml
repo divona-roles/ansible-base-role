@@ -18,9 +18,12 @@ galaxy_info:
   description: Base role for Divona
   company: Mine
 
+  role_name: ansible-base-role
+  namespace: divona-roles
+
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
-  # issue_tracker_url: http://example.com/issue/tracker
+  issue_tracker_url: http://github.com/divona-roles/ansible-base-role/issues
 
   # Some suggested licenses:
   # - BSD (default)
