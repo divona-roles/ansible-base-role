@@ -18,6 +18,7 @@ ignore: |
   .github/
   venv
   .yamllint
+  .pre-commit-config.yaml
 
 rules:
   braces:

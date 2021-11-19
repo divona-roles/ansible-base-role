@@ -22,7 +22,8 @@
          ansible_distribution == 'Linux Mint' or
          ansible_distribution == 'Fedora' or
          ansible_distribution == 'FreeBSD' or
-         ansible_distribution == 'NetBSD')
+         ansible_distribution == 'NetBSD' or
+         ansible_distribution == 'MacOSX')
   become: true
   become_user: root
 

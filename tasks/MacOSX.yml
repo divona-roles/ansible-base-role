@@ -13,29 +13,29 @@
 # limitations under the License.
 
 ---
-- name: Create user binary directory
-  file:
-    path: "/Users/{{ user }}/bin"
-    owner: "{{ user }}"
-    state: directory
-    mode: 0755
+# - name: Create user binary directory
+#   ansible.builtin.file:
+#     path: "/Users/{{ user }}/bin"
+#     owner: "{{ user }}"
+#     state: directory
+#     mode: 0755
 
-- name: Create Applications directory
-  file:
-    path: "/Users/{{ user }}/Applications"
-    owner: "{{ user }}"
-    state: directory
-    mode: 0755
+# - name: Create Applications directory
+#   ansible.builtin.file:
+#     path: "/Users/{{ user }}/Applications"
+#     owner: "{{ user }}"
+#     state: directory
+#     mode: 0755
 
-- name: Create Documents directory
-  file:
-    path: "/Users/{{ user }}/Documents"
-    owner: "{{ user }}"
-    state: directory
-    mode: 0755
+# - name: Create Documents directory
+#   ansible.builtin.file:
+#     path: "/Users/{{ user }}/Documents"
+#     owner: "{{ user }}"
+#     state: directory
+#     mode: 0755
 
 - name: Install shell tools
-  homebrew:
+  community.general.homebrew:
     name: "{{ item }}"
     state: present
   with_items:
@@ -44,7 +44,7 @@
     - ncdu
 
 - name: Install libraries with homebrew
-  homebrew:
+  community.general.homebrew:
     name: "{{ item }}"
     state: present
   with_items:
@@ -54,7 +54,7 @@
     - wget
 
 - name: Install modern Unix tools
-  homebrew:
+  community.general.homebrew:
     name: "{{ item }}"
     state: present
   with_items:

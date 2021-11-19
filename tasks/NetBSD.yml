@@ -14,7 +14,7 @@
 
 ---
 - name: Install defaults packages
-  pkgin:
+  community.general.pkgin:
     pkg: "{{ packages }}"
     state: present
   vars:
