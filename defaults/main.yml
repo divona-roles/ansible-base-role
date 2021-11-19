@@ -55,3 +55,18 @@ lazygit_darwin_package_name: lazygit_{{ lazygit_version }}_Darwin_x86_64.tar.gz
 lazygit_darwin_checksum: "sha256:a51fb5bebcde0c01b21ee8b2d75e13846601f9b996eb23ef87f5ea89775f0737"
 lazygit_darwin_download_url: https://github.com/jesseduffield/lazygit/releases/download/v{{ lazygit_version }}/{{ lazygit_darwin_package_name }}
 lazygit_darwin_dir: /Users/{{ user }}/bin
+
+user_dirs:
+  - Applications
+  - Project
+  - Work
+
+xdg_dirs:
+  - Desktop
+  - Documents
+  - Downloads
+  - Music
+  - Pictures
+  - Public
+  - Templates
+  - Videos
