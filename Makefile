@@ -13,12 +13,16 @@
 # limitations under the License.
 
 BANNER = D I V O N A - R O L E S / B A S E
+
+APP = ansible-base-role
+
 VERSION = 3.0.0
 
 PYTHON3 = python3
 
-ANSIBLE_VERSION = 2.9.9
-MOLECULE_VERSION = 3.0.4
+# ANSIBLE_VERSION = 4.8.0
+# MOLECULE_VERSION = 3.5.2
+# ANSIBLE_LINT =
 ANSIBLE_VENV = $(DIR)/venv
 ANSIBLE_ROLES = $(DIR)/roles/
 
@@ -74,16 +78,27 @@ print-%:
 		echo -e "$(OK_COLOR)[OK]$(NO_COLOR) $* = ${$*}"; \
 	fi
 
+
+# ====================================
+# D E V E L O P M E N T
+# ====================================
+
 ##@ Development
 
+.PHONY: init
+init: ## Initialize environment
+	@poetry install --no-root
+
+# @poetry run pre-commit install
+
 clean: ## Cleanup
-	@echo -e "$(OK_COLOR)[$(BANNER)] Cleanup$(NO_COLOR)"
+	@echo -e "$(OK_COLOR)[$(APP)] Cleanup$(NO_COLOR)"
 	@find . -name "*.retry"|xargs rm -fr {} \;
 	@rm -fr roles
 
 .PHONY: validate
 validate: ## Execute git-hooks
-	@pre-commit run -a
+	@poetry run pre-commit run -a
 
 
 # ====================================
@@ -94,7 +109,7 @@ validate: ## Execute git-hooks
 
 .PHONY: ansible-init
 ansible-init: ## Bootstrap Ansible
-	@echo -e "$(OK_COLOR)[$(BANNER)] Install requirements$(NO_COLOR)"
+	@echo -e "$(OK_COLOR)[$(APP)] Install requirements$(NO_COLOR)"
 	@test -d venv || $(PYTHON3) -m venv venv
 	@. venv/bin/activate && pip3 install ansible==$(ANSIBLE_VERSION) molecule==$(MOLECULE_VERSION) docker yamllint
 

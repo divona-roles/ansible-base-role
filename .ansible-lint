@@ -12,23 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-extends: default
-ignore: |
-  .github/
-  venv
-  .yamllint
-  .ansible-lint
-  .pre-commit-config.yaml
+skip_list:
+  - '106'  # Role name {} does not match ``^[a-z][a-z0-9_]+$`` pattern'
+  # - '204'  # Lines should be no longer than 160 chars'
 
-rules:
-  braces:
-    max-spaces-inside: 1
-    level: error
-  brackets:
-    max-spaces-inside: 1
-    level: error
-  line-length: disable
-  # NOTE(retr0h): Templates no longer fail this lint rule.
-  #               Uncomment if running old Molecule templates.
-  # truthy: disable
+warn_list:
+ - '701'  # meta/main.yml should contain relevant info'
+ - '703'  # meta/main.yml default values should be changed'
