@@ -13,33 +13,33 @@
 # limitations under the License.
 
 ---
-- name: Create Applications directory
+- name: User | Create Applications directory
   ansible.builtin.file:
     path: C:\Applications
     state: directory
     mode: 0755
 
-- name: Create local "Users" group
+- name: User | Create local "Users" group
   win_group:
     name: Users
     description: Local Users
     state: present
 
-- name: Install shell tools
+- name: Packages | Install shell tools
   win_chocolatey:
     name: "{{ item }}"
     state: present
   with_items:
     - fzf
 
-- name: Install terminal emulators
+- name: Packages | Install terminal emulators
   win_chocolatey:
     name: "{{ item }}"
     state: present
   with_items:
     - cmder
 
-- name: Install packages
+- name: Packages | Install packages
   win_chocolatey:
     name: "{{ item }}"
     state: present

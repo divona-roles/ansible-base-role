@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ---
-- name: Install shell tools
+- name: Packages | Install shell tools
   apt:
     name: "{{ packages }}"
     state: present
@@ -25,7 +25,7 @@
       - ncdu
       - feh
 
-- name: Install terminal emulators
+- name: Packages | Install terminal emulators
   apt:
     name: "{{ packages }}"
     state: present
@@ -33,7 +33,7 @@
     packages:
       - terminator
 
-- name: Install networks tools
+- name: Packages | Install networks tools
   apt:
     name: "{{ packages }}"
     state: present
@@ -44,7 +44,7 @@
       - curl
       - ngrep
 
-- name: Install defaults packages
+- name: Packages | Install defaults packages
   apt:
     name: "{{ packages }}"
     state: present

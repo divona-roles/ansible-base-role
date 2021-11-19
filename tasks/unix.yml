@@ -13,27 +13,14 @@
 # limitations under the License.
 
 ---
-- name: Ensure user exists
+- name: System | Ensure user exists
   ansible.builtin.user:
     name: "{{ user }}"
     shell: /bin/zsh
     groups: users
     append: true
 
-# - name: Ensure group exists
-#   group:
-#     name: "{{ user }}"
-#     state: present
-
-# - name: Create Applications directory
-#   file:
-#     path: /home/{{ user }}/Applications
-#     owner: "{{ user }}"
-#     group: "{{ user }}"
-#     state: directory
-#     mode: 0755
-
-- name: Create user binary directory
+- name: User | Create binary directory
   ansible.builtin.file:
     path: /home/{{ user }}/bin
     owner: "{{ user }}"
@@ -41,7 +28,7 @@
     state: directory
     mode: 0755
 
-- name: Create user configuration directory
+- name: User | Create configuration directory
   ansible.builtin.file:
     path: /home/{{ user }}/etc
     owner: "{{ user }}"
@@ -49,31 +36,7 @@
     state: directory
     mode: 0755
 
-# - name: Create Work directory
-#   file:
-#     path: /home/{{ user }}/Work
-#     owner: "{{ user }}"
-#     group: "{{ user }}"
-#     state: directory
-#     mode: 0755
-
-# - name: Create own projects directory
-#   file:
-#     path: /home/{{ user }}/Projects
-#     owner: "{{ user }}"
-#     group: "{{ user }}"
-#     state: directory
-#     mode: 0755
-
-# - name: Create Documents directory
-#   file:
-#     path: /home/{{ user }}/Documents
-#     owner: "{{ user }}"
-#     group: "{{ user }}"
-#     state: directory
-#     mode: 0755
-
-- name: Create XDG directories
+- name: User | Create XDG directories
   ansible.builtin.file:
     path: /home/{{ user }}/{{ item }}
     owner: "{{ user }}"
@@ -82,7 +45,7 @@
     mode: 0755
   loop: "{{ xdg_dirs }}"
 
-- name: Create user directories
+- name: User | Create user directories
   ansible.builtin.file:
     path: /home/{{ user }}/{{ item }}
     owner: "{{ user }}"

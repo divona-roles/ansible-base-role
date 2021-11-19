@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ---
-- name: Install EPEL Repository
+- name: YUM | Install EPEL Repository
   yum:
     name: "{{ packages }}"
     state: present
@@ -21,7 +21,7 @@
     packages:
       - epel-release
 
-- name: Enable Nux-Desktop repository
+- name: YUM | Enable Nux-Desktop repository
   yum_repository:
     name: nux-dextop
     description: Nux.Ro RPMs for general desktop use
@@ -30,7 +30,7 @@
     gpgcheck: true
     skip_if_unavailable: true
 
-- name: Enable Repoforge repository
+- name: YUM | Enable Repoforge repository
   yum_repository:
     name: rpmforge
     description: RPMforge YUM repo
@@ -39,7 +39,7 @@
     mirrorlist: http://mirrorlist.repoforge.org/el{{ ansible_distribution_major_version }}/mirrors-rpmforge
     enabled: true
 
-- name: Install shell tools
+- name: Packages | Install shell tools
   yum:
     name: "{{ packages }}"
     state: present
@@ -50,7 +50,7 @@
       - tree
       - ncdu
 
-- name: Install default packages
+- name: Packages | Install default packages
   yum:
     name: "{{ packages }}"
     state: present
@@ -63,7 +63,7 @@
       - unzip
       - rsyslog
 
-- name: Install terminal emulators
+- name: Packages | Install terminal emulators
   yum:
     name: "{{ packages }}"
     state: present
@@ -71,7 +71,7 @@
     packages:
       - terminator
 
-- name: Install network tools
+- name: Packages | Install network tools
   yum:
     name: "{{ packages }}"
     state: present
