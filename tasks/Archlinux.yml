@@ -13,11 +13,11 @@
 # limitations under the License.
 
 ---
-- name: Update database
+- name: Pacman | Update database
   community.general.pacman:
     update_cache: true
 
-- name: Install distribution tools
+- name: Pacman | Install distribution tools
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -25,7 +25,7 @@
     packages:
       - pacman-contrib
 
-- name: Install Bash shell
+- name: Shell | Install Bash
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -33,7 +33,7 @@
     packages:
       - bash-completion
 
-- name: Install Zsh shell
+- name: Shell | Install Zsh
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -42,7 +42,7 @@
       - zsh-completions
       - zsh-autosuggestions
 
-- name: Install Fish shell
+- name: Shell | Install Fish
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -50,7 +50,7 @@
     packages:
       - fish
 
-- name: Install shell tools
+- name: Shell | Install tools
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -65,7 +65,7 @@
       - nnn
       - htop
 
-- name: Install defaults packages
+- name: Packages | Install core
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -80,7 +80,7 @@
       - ccze
       - dmidecode
 
-- name: Install terminal emulators
+- name: Packages | Install terminal emulators
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -89,7 +89,7 @@
       # - termite
       - alacritty
 
-- name: Install networks tools
+- name: Packages | Install networks tools
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -111,7 +111,7 @@
       - nethogs
       - bandwhich
 
-- name: Install modern Unix tools
+- name: Packages | Install modern Unix tools
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -125,7 +125,7 @@
       - lsd
       - diskus
 
-- name: Install file system tools
+- name: Packages | Install file system tools
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -138,13 +138,13 @@
       - xdg-user-dirs
       - xdg-user-dirs-gtk
 
-- name: Install laptop powermanagement
+- name: Laptop | Install powermanagement
   community.general.pacman:
     name:
       - tlp
     state: present
 
-- name: Make sure laptop powermanagement service unit is running
+- name: Laptop | Make sure powermanagement service unit is running
   ansible.builtin.systemd:
     state: started
     name: tlp

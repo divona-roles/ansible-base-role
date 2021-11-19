@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ---
-- name: Install shell tools
+- name: Packages | Install shell tools
   dnf:
     name: "{{ packages }}"
     state: present
@@ -26,7 +26,7 @@
       - ncdu
       - feh
 
-- name: Install terminal emulators
+- name: Packages | Install terminal emulators
   dnf:
     name: "{{ packages }}"
     state: present
@@ -34,7 +34,7 @@
     packages:
       - terminator
 
-- name: Install network tools
+- name: Packages | Install network tools
   dnf:
     name: "{{ packages }}"
     state: present
@@ -45,7 +45,7 @@
       - curl
       - ngrep
 
-- name: Install defaults packages
+- name: Packages | Install defaults packages
   dnf:
     name: "{{ packages }}"
     state: present
@@ -63,7 +63,7 @@
       - mlocate
       - ccze
 
-- name: Install modern Unix tools
+- name: Packages | Install modern Unix tools
   dnf:
     name: "{{ packages }}"
     state: present

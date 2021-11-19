@@ -34,7 +34,7 @@
 #     state: directory
 #     mode: 0755
 
-- name: Install shell tools
+- name: Packages | Install shell tools
   community.general.homebrew:
     name: "{{ item }}"
     state: present
@@ -43,7 +43,7 @@
     - tmux
     - ncdu
 
-- name: Install libraries with homebrew
+- name: Packages | Install libraries with homebrew
   community.general.homebrew:
     name: "{{ item }}"
     state: present
@@ -53,7 +53,7 @@
     - pinentry
     - wget
 
-- name: Install modern Unix tools
+- name: Packages | Install modern Unix tools
   community.general.homebrew:
     name: "{{ item }}"
     state: present

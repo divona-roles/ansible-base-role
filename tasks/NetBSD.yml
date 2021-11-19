@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ---
-- name: Install defaults packages
+- name: Packages | Install defaults packages
   community.general.pkgin:
     pkg: "{{ packages }}"
     state: present
