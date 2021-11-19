@@ -81,3 +81,12 @@
     state: directory
     mode: 0755
   loop: "{{ xdg_dirs }}"
+
+- name: Create user directories
+  ansible.builtin.file:
+    path: /home/{{ user }}/{{ item }}
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    state: directory
+    mode: 0755
+  loop: "{{ user_dirs }}"

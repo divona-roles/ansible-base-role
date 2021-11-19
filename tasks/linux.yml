@@ -13,11 +13,3 @@
 # limitations under the License.
 
 ---
-- name: Install Powerline-Go CLI
-  # when:
-  #   - powerling_go_installation_required
-  get_url:
-    url: "{{ powerline_go_linux_download_url }}"
-    dest: "{{ powerline_go_linux_file }}"
-    mode: 0755
-    force: true
