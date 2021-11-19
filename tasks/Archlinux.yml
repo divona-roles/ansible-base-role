@@ -14,11 +14,11 @@
 
 ---
 - name: Update database
-  pacman:
+  community.general.pacman:
     update_cache: true
 
 - name: Install distribution tools
-  pacman:
+  community.general.pacman:
     name: "{{ packages }}"
     state: present
   vars:
@@ -26,7 +26,7 @@
       - pacman-contrib
 
 - name: Install Bash shell
-  pacman:
+  community.general.pacman:
     name: "{{ packages }}"
     state: present
   vars:
@@ -34,7 +34,7 @@
       - bash-completion
 
 - name: Install Zsh shell
-  pacman:
+  community.general.pacman:
     name: "{{ packages }}"
     state: present
   vars:
@@ -43,7 +43,7 @@
       - zsh-autosuggestions
 
 - name: Install Fish shell
-  pacman:
+  community.general.pacman:
     name: "{{ packages }}"
     state: present
   vars:
@@ -51,7 +51,7 @@
       - fish
 
 - name: Install shell tools
-  pacman:
+  community.general.pacman:
     name: "{{ packages }}"
     state: present
   vars:
@@ -66,7 +66,7 @@
       - htop
 
 - name: Install defaults packages
-  pacman:
+  community.general.pacman:
     name: "{{ packages }}"
     state: present
   vars:
@@ -81,7 +81,7 @@
       - dmidecode
 
 - name: Install terminal emulators
-  pacman:
+  community.general.pacman:
     name: "{{ packages }}"
     state: present
   vars:
@@ -90,7 +90,7 @@
       - alacritty
 
 - name: Install networks tools
-  pacman:
+  community.general.pacman:
     name: "{{ packages }}"
     state: present
   vars:
@@ -112,7 +112,7 @@
       - bandwhich
 
 - name: Install modern Unix tools
-  pacman:
+  community.general.pacman:
     name: "{{ packages }}"
     state: present
   vars:
@@ -126,7 +126,7 @@
       - diskus
 
 - name: Install file system tools
-  pacman:
+  community.general.pacman:
     name: "{{ packages }}"
     state: present
   vars:

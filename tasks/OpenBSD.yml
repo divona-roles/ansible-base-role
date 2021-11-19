@@ -14,7 +14,7 @@
 
 ---
 - name: Install defaults packages
-  openbsd_pkg:
+  community.general.openbsd_pkg:
     name: '{{ item }}'
     state: present
   with_items:

@@ -14,7 +14,7 @@
 
 ---
 - name: Create Applications directory
-  file:
+  ansible.builtin.file:
     path: /home/{{ user }}/Applications
     owner: "{{ user }}"
     group: "{{ user }}"
@@ -22,7 +22,7 @@
     mode: 0755
 
 - name: Create user binary directory
-  file:
+  ansible.builtin.file:
     path: /home/{{ user }}/bin
     owner: "{{ user }}"
     group: "{{ user }}"
@@ -30,14 +30,14 @@
     mode: 0755
 
 - name: Check Yay installation
-  command: which yay
+  ansible.builtin.command: which yay
   register: yay_installation
   changed_when: false
   ignore_errors: true
   check_mode: false
 
 - name: Get installed Yay version
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     {{ yay_installation.stdout }} --version|awk -F' ' '{ print $2}'|sed -e 's/v//g'
   when: not yay_installation is failed
@@ -46,21 +46,21 @@
   register: installed_yay_version
 
 - name: Yay installation is required
-  set_fact:
+  ansible.builtin.set_fact:
     yay_installation_required: "{{ yay_installation is failed or installed_yay_version.stdout != yay_version }}"
 
 - name: Install Yay
-  when:
-    - yay_installation_required
-  unarchive:
+  ansible.builtin.unarchive:
     src: "{{ yay_download_url }}"
     dest: "{{ yay_dir }}"
     remote_src: true
-
-- name: Adding Yay command to user path
   when:
     - yay_installation_required
-  file:
+
+- name: Adding Yay command to user path
+  ansible.builtin.file:
     src: "{{ yay_install_dir }}/yay"
     dest: /home/{{ user }}/bin/yay
     state: link
+  when:
+    - yay_installation_required
