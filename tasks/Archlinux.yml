@@ -161,3 +161,21 @@
 #     line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
 #     create: yes
 #     validate: 'visudo -cf %s'
+
+- name: Python | Install tools
+  community.general.pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - python-pip
+      - python-virtualenv
+      - python-poetry
+
+- name: Ruby | Install tools
+  community.general.pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - rubygems
