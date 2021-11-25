@@ -110,6 +110,7 @@
       - ngrep
       - nethogs
       - bandwhich
+      - wireguard-tools
 
 - name: Packages | Install modern Unix tools
   community.general.pacman:
