@@ -30,5 +30,4 @@ jobs:
         targets: "."
         args: ""
         override-deps: |
-          # ansible-lint==5.3.2
-          rich>=9.5.1,<11.0.0
+          ansible-lint==5.3.2
