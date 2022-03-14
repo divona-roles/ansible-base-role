@@ -74,7 +74,6 @@
       - man-db
       - dunst
       - git
-      - gnupg
       - tig
       - unzip
       - ccze
@@ -180,3 +179,15 @@
   vars:
     packages:
       - rubygems
+
+- name: Yubikey | Install tools
+  community.general.pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - gnupg
+      - pcsclite
+      - ccid
+      - yubikey-personalization
+      # - hopenpgp-tools
