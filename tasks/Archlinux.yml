@@ -25,6 +25,14 @@
     packages:
       - pacman-contrib
 
+- name: System | Configure resolv.conf
+  ansible.builtin.copy:
+    src: resolv.conf
+    dest: /etc/resolv.conf.head
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: Shell | Install Bash
   community.general.pacman:
     name: "{{ packages }}"
@@ -50,7 +58,7 @@
     packages:
       - fish
 
-- name: Shell | Install tools
+- name: Shell | Install core tools
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -64,13 +72,6 @@
       - feh
       - nnn
       - htop
-
-- name: Packages | Install core
-  community.general.pacman:
-    name: "{{ packages }}"
-    state: present
-  vars:
-    packages:
       - man-db
       - dunst
       - git
@@ -78,6 +79,7 @@
       - unzip
       - ccze
       - dmidecode
+      - gitui
 
 - name: Packages | Install terminal emulators
   community.general.pacman:
@@ -137,6 +139,16 @@
       - xdg-utils
       - xdg-user-dirs
       - xdg-user-dirs-gtk
+      - xplr
+
+- name: Packages | Install monitoring tools
+  community.general.pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - btop
+      - kmon
 
 - name: Laptop | Install powermanagement
   community.general.pacman:
@@ -162,7 +174,7 @@
 #     create: yes
 #     validate: 'visudo -cf %s'
 
-- name: Python | Install tools
+- name: Python | Install tools
   community.general.pacman:
     name: "{{ packages }}"
     state: present
@@ -172,7 +184,7 @@
       - python-virtualenv
       - python-poetry
 
-- name: Ruby | Install tools
+- name: Ruby | Install tools
   community.general.pacman:
     name: "{{ packages }}"
     state: present
