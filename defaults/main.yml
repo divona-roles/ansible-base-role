@@ -15,6 +15,7 @@
 ---
 # defaults file for base
 
+#datasource=github-tags depName=Jguer/yay
 yay_version: 11.0.2
 yay_package_name: "yay_{{ yay_version }}_x86_64.tar.gz"
 yay_download_url: https://github.com/Jguer/yay/releases/download/v{{ yay_version }}/yay_{{ yay_version }}_x86_64.tar.gz
