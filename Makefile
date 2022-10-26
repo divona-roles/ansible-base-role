@@ -99,21 +99,3 @@ clean: ## Cleanup
 .PHONY: validate
 validate: ## Execute git-hooks
 	@poetry run pre-commit run -a
-
-
-# ====================================
-# A N S I B L E
-# ====================================
-
-##@ Ansible
-
-.PHONY: ansible-init
-ansible-init: ## Bootstrap Ansible
-	@echo -e "$(OK_COLOR)[$(APP)] Install requirements$(NO_COLOR)"
-	@test -d venv || $(PYTHON3) -m venv venv
-	@. venv/bin/activate && pip3 install ansible==$(ANSIBLE_VERSION) molecule==$(MOLECULE_VERSION) docker yamllint
-
-.PHONY: ansible-test
-ansible-test: ## Test Ansible role
-	@echo -e "$(OK_COLOR)[$(APP)] Verify Ansible$(NO_COLOR)"
-	@. venv/bin/activate && molecule $(DEBUG) test

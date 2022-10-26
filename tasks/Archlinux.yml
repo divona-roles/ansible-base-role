@@ -25,13 +25,13 @@
     packages:
       - pacman-contrib
 
-- name: System | Configure resolv.conf
-  ansible.builtin.copy:
-    src: resolv.conf
-    dest: /etc/resolv.conf.head
-    owner: root
-    group: root
-    mode: '0644'
+# - name: System | Configure resolv.conf
+#   ansible.builtin.copy:
+#     src: resolv.conf
+#     dest: /etc/resolv.conf.head
+#     owner: root
+#     group: root
+#     mode: '0644'
 
 - name: Shell | Install Bash
   community.general.pacman:
@@ -126,6 +126,10 @@
       - bat
       - lsd
       - diskus
+      - dust
+      - zoxide
+      - git-delta
+      - difftastic
 
 - name: Packages | Install file system tools
   community.general.pacman:
@@ -154,12 +158,20 @@
   community.general.pacman:
     name:
       - tlp
+      - acpid
+      - acpi_call
+      - upower
     state: present
 
 - name: Laptop | Make sure powermanagement service unit is running
   ansible.builtin.systemd:
     state: started
     name: tlp
+
+- name: Laptop | Acpid service unit is running
+  ansible.builtin.systemd:
+    state: started
+    name: acpid
 
 # - name: Create the `aur_builder` user
 #   ansible.builtin.user:
@@ -173,6 +185,29 @@
 #     line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
 #     create: yes
 #     validate: 'visudo -cf %s'
+
+- name: Laptop | Create systemd-networkd directory
+  ansible.builtin.file:
+    path: /etc/systemd/network
+    state: directory
+
+- name: Laptop | Enable systemd-networkd
+  ansible.builtin.systemd:
+    name: systemd-networkd
+    enabled: yes
+
+- name: Laptop | Start and enable systemd-resolved
+  ansible.builtin.systemd:
+    name: systemd-resolved
+    enabled: yes
+    state: started
+
+- name: Laptop | Symlink to the systemd-resolved stub
+  ansible.builtin.file:
+    path: /etc/resolv.conf
+    src: /run/systemd/resolve/stub-resolv.conf
+    state: link
+    force: yes
 
 - name: Python | Install tools
   community.general.pacman:
