@@ -186,6 +186,11 @@
 #     create: yes
 #     validate: 'visudo -cf %s'
 
+- name: Laptop | Create systemd-networkd directory
+  ansible.builtin.file:
+    path: /etc/systemd/network
+    state: directory
+
 - name: Laptop | Enable systemd-networkd
   ansible.builtin.systemd:
     name: systemd-networkd
