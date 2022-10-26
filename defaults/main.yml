@@ -22,14 +22,7 @@ yay_download_url: https://github.com/Jguer/yay/releases/download/v{{ yay_version
 yay_dir: /home/{{ user }}/Applications
 yay_install_dir: /home/{{ user }}/Applications/yay_{{ yay_version }}_x86_64
 
-lf_version: r26
-lf_linux_package_name: lf-linux-amd64.tar.gz
-lf_linux_download_url: https://github.com/gokcehan/lf/releases/download/{{ lf_version }}/{{ lf_linux_package_name }}
-lf_linux_dir: /home/{{ user }}/bin
-lf_darwin_package_name: lf-darwin-amd64.tar.gz
-lf_darwin_download_url: https://github.com/gokcehan/lf/releases/download/{{ lf_version }}/{{ lf_darwin_package_name }}
-lf_darwin_dir: /Users/{{ user }}/bin/lf
-
+#datasource=github-tags depName=jesseduffield/lazygit
 lazygit_version: 0.31.3
 lazygit_linux_package_name: lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz
 lazygit_linux_checksum: "sha256:11768b99b5c2b85c435a3cff585187a8e6d2b102ff45f6bb744f69b2a28112db"

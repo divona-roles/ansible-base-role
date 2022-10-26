@@ -16,7 +16,6 @@
   "assignees": ["@nlamirault"],
   "reviewersFromCodeOwners": true,
   "labels": ["kind/renovate"],
-
   "regexManagers": [
     {
       "fileMatch": [".*yml$"],
@@ -30,33 +29,49 @@
     {
       "datasources": ["galaxy", "galaxy-collection"],
       "updateTypes": ["major"],
-      "labels": ["kind/renovate", "dependency/ansible", "priority/high", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/ansible", "priority/high", "size/xs"]
     },
     {
       "datasources": ["galaxy", "galaxy-collection"],
       "updateTypes": ["minor"],
-      "labels": ["kind/renovate", "dependency/ansible", "priority/medium", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/ansible", "priority/medium", "size/xs"]
     },
     {
       "datasources": ["galaxy", "galaxy-collection"],
       "updateTypes": ["patch"],
-      "labels": ["kind/renovate", "dependency/ansible", "priority/low", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/ansible", "priority/low", "size/xs"]
     },
     // Labels for Github Tags
     {
       "datasources": ["github-tags"],
       "updateTypes": ["major"],
-      "labels": ["kind/renovate", "dependency/ansible", "priority/high", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/ansible", "priority/high", "size/xs"]
     },
     {
       "datasources": ["github-tags"],
       "updateTypes": ["minor"],
-      "labels": ["kind/renovate", "dependency/ansible", "priority/medium", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/ansible", "priority/medium", "size/xs"]
     },
     {
       "datasources": ["github-tags"],
       "updateTypes": ["patch"],
-      "labels": ["kind/renovate", "dependency/ansible", "priority/low", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/ansible", "priority/low", "size/xs"]
+    },
+    // Labels for Github Actions
+    {
+      "datasources": ["action"],
+      "updateTypes": ["major"],
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/high", "size/xs"]
+    },
+    {
+      "datasources": ["action"],
+      "updateTypes": ["minor"],
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/medium", "size/xs"]
+    },
+    {
+      "datasources": ["action"],
+      "updateTypes": ["patch"],
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/low", "size/xs"]
     },
     // Enable auto-merge docker
     // {
