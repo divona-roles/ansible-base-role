@@ -23,7 +23,7 @@ yay_dir: /home/{{ user }}/Applications
 yay_install_dir: /home/{{ user }}/Applications/yay_{{ yay_version }}_x86_64
 
 #datasource=github-tags depName=jesseduffield/lazygit
-lazygit_version: 0.31.3
+lazygit_version: v0.36.0
 lazygit_linux_package_name: lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz
 lazygit_linux_checksum: "sha256:11768b99b5c2b85c435a3cff585187a8e6d2b102ff45f6bb744f69b2a28112db"
 lazygit_linux_download_url: https://github.com/jesseduffield/lazygit/releases/download/v{{ lazygit_version }}/{{ lazygit_linux_package_name }}
